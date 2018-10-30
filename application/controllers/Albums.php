@@ -10,6 +10,7 @@ class Albums extends CI_Controller {
 		$data[ 'active' ] = 'list';
 		$data[ 'header' ] = 'List Album';
 		$data[ 'main_content' ] = 'list_album';
+		$data['albums']=$this->albums_model->get_album();
 		$this->load->view( 'layout\main', $data );
 	}
 	public
@@ -60,6 +61,20 @@ class Albums extends CI_Controller {
 	
 			$this->load->view( 'jsons_rest\feedback', $data );
 		}
+	}
+	public function delete()
+	{
+		$albumid=$this->input->post('albumid');
+		$this->albums_model->delete( $albumid );
+		$date['album']=$albumid;
+		$this->load->view( 'jsons_rest\delete', $data );
+	}
+	public function edit($id)
+	{
+		$data[ 'active' ] = 'list';
+		$data[ 'header' ] = 'List Album';
+		$data[ 'main_content' ] = 'edit_view';
+		$this->load->view( 'layout\main', $data );
 	}
 
 }

@@ -6,10 +6,7 @@
 	
 
 
-	<link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icon.png">
-
-	<link rel="icon" type="image/png" href="assets/img/icon.png">
-
+	<link rel="icon" type="image/png" href="<?php echo base_url()?>assets/img/icon.ico">
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
