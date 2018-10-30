@@ -3,12 +3,15 @@
 <center>
 	<h1>ADD ALBUM</h1>
 </center>
+
 <center>
-	<div class="form-group">
+	<div class="form-group1">
 	<?php
 	$attributes = array( 'id' => 'form' );
 	echo form_open_multipart( 'albums/postAlbum', $attributes );
 	?>
+		<br>
+		<br>
 	<input type="text" placeholder="Album Name" required name="name" class="form-control"/>
 	<input type="text" placeholder="Artist" name="artist" required class="form-control"/>
 	<input type="file" placeholder="Album Name" name="cover" accept='image/*' required class="form-control"/>

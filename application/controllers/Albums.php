@@ -3,7 +3,7 @@ defined( 'BASEPATH' )OR exit( 'No direct script access allowed' );
 
 class Albums extends CI_Controller {
 
-
+//index
 	public
 
 	function index() {
@@ -14,14 +14,14 @@ class Albums extends CI_Controller {
 		$this->load->view( 'layout\main', $data );
 	}
 	public
-
+//function to open add album page
 	function AddAlbum() {
 		$data[ 'active' ] = 'Add';
 		$data[ 'header' ] = 'Add Album';
 		$data[ 'main_content' ] = 'add_album';
 		$this->load->view( 'layout\main', $data );
 	}
-
+//function to post ad add album to the data base
 	public
 
 	function postAlbum() {
@@ -62,6 +62,8 @@ class Albums extends CI_Controller {
 			$this->load->view( 'jsons_rest\feedback', $data );
 		}
 	}
+	
+	//function to delete albums
 	public function delete()
 	{
 		$albumid=$this->input->post('albumid');
@@ -69,6 +71,7 @@ class Albums extends CI_Controller {
 		$date['album']=$albumid;
 		$this->load->view( 'jsons_rest\delete', $data );
 	}
+	//function to add review to the database
 		public function post_review($id)
 	{
 		$name=$this->input->post('name');
@@ -81,11 +84,49 @@ class Albums extends CI_Controller {
 		$this->albums_model->insert( 'vectra_reviews',$insReview );
 		$this->load->view( 'jsons_rest\review_json', $data );
 	}
+	//function to open the edit page
 	public function edit($id)
 	{
 		$data[ 'active' ] = 'list';
-		$data[ 'header' ] = 'List Album';
+		$data[ 'header' ] = 'Edit Album';
 		$data[ 'main_content' ] = 'edit_view';
+		$data['id']=$id;
+		$data['albums']=$this->albums_model->get_single($id);
+		$this->load->view( 'layout\main', $data );
+	}
+	//function to update the albums
+	public function editJson($id)
+	{
+			
+			$date=$this->input->post('released');
+			$artist=$this->input->post('artist');
+			$name=$this->input->post('name');
+			
+			$album=array(
+			'album_name'=>$name,
+			'album_artist'=>$artist,
+			'released_year'=>$date
+			);
+			
+			$this->albums_model->edit( $id, $album );
+			$data['feedback']="Album is added successfully";
+			$data['success']=true;
+	
+			$this->load->view( 'jsons_rest\feedback', $data );
+	}
+	//function to open reviews page
+	public function viewRviews($id){
+		$data[ 'active' ] = 'list';
+		$data[ 'header' ] = 'reviews of the album';
+		$data[ 'main_content' ] = 'reviews';
+		$data['id']=$id;
+		$data['reviews']=$this->albums_model->get_reviews($id);
+		if(empty($data['reviews']))
+		{
+		
+			$data[ 'main_content' ] = 'empty';
+		}
+			
 		$this->load->view( 'layout\main', $data );
 	}
 

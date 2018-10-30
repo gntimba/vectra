@@ -34,5 +34,18 @@ class albums_model extends CI_Model {
 	$this->db->update('vectra_album');
 		
 	}
+	function edit($id,$data){
+		$this->db->where('id', $id);
+		$this->db->update('vectra_album', $data);
+		
+	}
+
+	function get_reviews($id){
+		$this->db->select( 'a.album_name,a.album_cover,r.review,r.name' );
+		$this->db->from( 'vectra_reviews r,vectra_album a' );
+		$this->db->where( "r.album_id=a.id and r.album_id=$id" );
+		$query = $this->db->get();
+		return $query->result();
+	}
 }
 ?>

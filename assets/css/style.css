@@ -1,11 +1,20 @@
-.form-group{
+.form-group1 {
 	width: 500px;
-	border:thin;
-	border-radius: 100px;
+	border: thin;
+	border-radius: 50px;
+-webkit-box-shadow: 3px 13px 33px -5px rgba(163,27,163,1);
+-moz-box-shadow: 3px 13px 33px -5px rgba(163,27,163,1);
+box-shadow: 3px 13px 33px -5px rgba(163,27,163,1);
 }
-.form-control{
+.review{
+	width: 500px;
+}
+.form-group {
+	width: 500px;
+	border: thin;
+	border-radius: 50px;
+}
+.form-control {
 	width: 400px;
 	margin-bottom: 10px;
-	
 }
-

@@ -23,7 +23,12 @@
     
 	<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url(); ?>assets/js/popper.min.js" type="text/javascript"></script>
-
+<style>
+	body{
+		background: url('<?php echo base_url('assets/img/background.jpg'); ?>');
+		
+	}
+	</style>
 
 
 	</head>

@@ -5,6 +5,7 @@
 </center>
 <center>
 	<div>
+	
 		<table class="table table-striped table-dark">
 			<thead>
 				<tr>
@@ -30,14 +31,16 @@
 					<td>
 						<?php echo $album->released_year; ?>
 					</td>
-					<td><button class="btn btn-danger delete" value="<?php echo $album->id?>">Remove Album</button>
-					</td>
 					<td>
-						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $album->id?>">Review <?php echo $album->album_name; ?></button>
+						<a href="<?php echo base_url('albums/viewRviews/').$album->id?>" class="btn btn-warning">View Reviews</a>
+						<button class="btn btn-danger delete" value="<?php echo $album->id?>">Remove Album</button>
+					
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-album="<?php echo $album->album_artist; ?>" data-whatever="<?php echo $album->id?>">Review <?php echo $album->album_name; ?></button>
 					</td>
 				</tr>
 				<?php endforeach; ?>
 		</table>
+		
 
 	</div>
 
@@ -46,7 +49,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">New message</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Review Album</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -101,12 +104,13 @@ var ur="";
 		$( '#exampleModal' ).on( 'show.bs.modal', function ( event ) {
 			var button = $( event.relatedTarget ) // Button that triggered the modal
 			var id = button.data( 'whatever' ) // Extract info from data-* attributes
+			var album = button.data( 'album' )
 				// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 				// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 			//$( '#review' ).attr( 'action', '<?php echo base_url('albums/post_review/')?>' + id );
 			ur='<?php echo base_url('albums/post_review/')?>' + id
 			var modal = $( this )
-				//modal.find('.modal-title').text('New message to ' + recipient)
+				modal.find('.modal-title').text('Review ' + album)
 				// modal.find('.modal-body input').val(recipient)
 		} )
 		$( '.review' ).click( function ( event ) {
