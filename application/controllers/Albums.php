@@ -69,6 +69,18 @@ class Albums extends CI_Controller {
 		$date['album']=$albumid;
 		$this->load->view( 'jsons_rest\delete', $data );
 	}
+		public function post_review($id)
+	{
+		$name=$this->input->post('name');
+		$review=$this->input->post('review');
+			$insReview=array('album_id'=>$id,
+							 'Review'=>$review,
+							 'name'=>$name
+							);
+			$data['review']="Review succesfully added";
+		$this->albums_model->insert( 'vectra_reviews',$insReview );
+		$this->load->view( 'jsons_rest\review_json', $data );
+	}
 	public function edit($id)
 	{
 		$data[ 'active' ] = 'list';
