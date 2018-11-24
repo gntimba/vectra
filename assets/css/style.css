@@ -2,11 +2,11 @@
 	width: 500px;
 	border: thin;
 	border-radius: 50px;
--webkit-box-shadow: 3px 13px 33px -5px rgba(163,27,163,1);
--moz-box-shadow: 3px 13px 33px -5px rgba(163,27,163,1);
-box-shadow: 3px 13px 33px -5px rgba(163,27,163,1);
+	-webkit-box-shadow: 3px 13px 33px -5px rgba(163,27,163,1);
+	-moz-box-shadow: 3px 13px 33px -5px rgba(163,27,163,1);
+	box-shadow: 3px 13px 33px -5px rgba(163,27,163,1);
 }
-.review{
+.review {
 	width: 500px;
 }
 .form-group {
@@ -17,4 +17,10 @@ box-shadow: 3px 13px 33px -5px rgba(163,27,163,1);
 .form-control {
 	width: 400px;
 	margin-bottom: 10px;
+}
+
+.table-fixed table {
+height: 150px;
+overflow-y: auto;
+width: 100%;
 }
